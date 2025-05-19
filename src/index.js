@@ -4,8 +4,15 @@ const multer = require('multer');
 const path = require('path');
 const { OpenAI } = require('openai');
 const sharp = require('sharp');
+const cors = require('cors');
 
 const app = express();
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['POST', 'GET', 'OPTIONS'], // Allow specific methods
+  credentials: true // Allow credentials
+}));
+
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
